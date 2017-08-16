@@ -1,20 +1,18 @@
 ﻿using Examen.Modelos;
 using Examen.UnidadDeTrabajo;
 using Moq;
-using System.Linq;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Examen.MockData
 {
-    public static class UnidadTrabajoMockeada
+    public class UnidadTrabajoMockeada
     {
         public static IUnidadTrabajo ObtenerUnidadDeTrabajo()
         {
-
             Mock<IUnidadTrabajo> unidad = new Mock<IUnidadTrabajo>();
             unidad.ConfigurarCorporacion();
-            unidad.ConfigurarMiembros();
             return unidad.Object;
         }
     }
@@ -101,110 +99,6 @@ namespace Examen.MockData
 
             return mock;
         }
-
-        public static Mock<IUnidadTrabajo> ConfigurarMiembros(this Mock<IUnidadTrabajo> mock)
-        {
-            List<Member> miembros = new List<Member>{
-                new Member
-                {
-                    Member_No = 1,
-                    LastName = "Quintana 1",
-                    FirstName = "Daniel 1",
-                    MiddleInitial = string.Empty,
-                    Street = string.Empty,
-                    City = string.Empty,
-                    State_Prov = string.Empty,
-                    Country = string.Empty,
-                    Mail_Code = string.Empty,
-                    Phone_No = string.Empty,
-                    Issue_Dt = DateTime.Now,
-                    Expr_Dt = DateTime.Now,
-                    Corp_No = 380,
-                    Prev_Balance = 0,
-                    Curr_Balance = 0,
-                    Member_Code = string.Empty
-                },
-                new Member
-                {
-                    Member_No = 2,
-                    LastName = "Quintana 2",
-                    FirstName = "Daniel 2",
-                    MiddleInitial = string.Empty,
-                    Street = string.Empty,
-                    City = string.Empty,
-                    State_Prov = string.Empty,
-                    Country = string.Empty,
-                    Mail_Code = string.Empty,
-                    Phone_No = string.Empty,
-                    Issue_Dt = DateTime.Now,
-                    Expr_Dt = DateTime.Now,
-                    Corp_No = 380,
-                    Prev_Balance = 0,
-                    Curr_Balance = 0,
-                    Member_Code = string.Empty
-                },
-                new Member
-                {
-                    Member_No = 3,
-                    LastName = "Quintana 3",
-                    FirstName = "Daniel 3",
-                    MiddleInitial = string.Empty,
-                    Street = string.Empty,
-                    City = string.Empty,
-                    State_Prov = string.Empty,
-                    Country = string.Empty,
-                    Mail_Code = string.Empty,
-                    Phone_No = string.Empty,
-                    Issue_Dt = DateTime.Now,
-                    Expr_Dt = DateTime.Now,
-                    Corp_No = 380,
-                    Prev_Balance = 0,
-                    Curr_Balance = 0,
-                    Member_Code = string.Empty
-                },
-                new Member
-                {
-                    Member_No = 4,
-                    LastName = "Quintana 4",
-                    FirstName = "Daniel 4",
-                    MiddleInitial = string.Empty,
-                    Street = string.Empty,
-                    City = string.Empty,
-                    State_Prov = string.Empty,
-                    Country = string.Empty,
-                    Mail_Code = string.Empty,
-                    Phone_No = string.Empty,
-                    Issue_Dt = DateTime.Now,
-                    Expr_Dt = DateTime.Now,
-                    Corp_No = 380,
-                    Prev_Balance = 0,
-                    Curr_Balance = 0,
-                    Member_Code = string.Empty
-                }
-            };
-
-            mock.Setup(c => c.Miembros.ListarTodo()).Returns(miembros);
-
-            mock.Setup(c => c.Miembros.TraerPorId(It.IsAny<int>())).Returns((int id) =>
-            {
-                return miembros.FirstOrDefault(x => x.Member_No == id);
-            });
-
-            mock.Setup(c => c.Miembros.Insertar(It.IsAny<Member>())).Returns(1);
-
-            mock.Setup(c => c.Miembros.Actualizar(It.IsAny<Member>())).Returns(true);
-
-            mock.Setup(c => c.Miembros.Eliminar(It.IsAny<Member>())).Returns(true);
-
-            mock.Setup(c => c.Miembros.ObtenerMiembrosPaginados(It.IsAny<int>(), It.IsAny<int>()))
-                .Returns((int filaInicial, int filaFinal) =>
-                {
-                    return miembros;
-                });
-
-            mock.Setup(c => c.Miembros.ContarRegistros()).Returns(2);
-
-            return mock;
-        }
+       
     }
 }

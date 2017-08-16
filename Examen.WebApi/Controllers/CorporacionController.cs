@@ -36,10 +36,10 @@ namespace Examen.WebApi.Controllers
             return Ok(_unidad.Corporaciones.Actualizar(corporacion));
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Eliminar(int id)
+        [HttpDelete]
+        public IActionResult Eliminar([FromBody]Corporation corporacion)
         {
-            return Ok(_unidad.Corporaciones.Eliminar(new Corporation { Corp_No=id }));
+            return Ok(_unidad.Corporaciones.Eliminar(corporacion));
         }
 
         [HttpGet]

@@ -1,13 +1,11 @@
 using Examen.MockData;
 using Examen.Modelos;
-using Examen.PruebaDatos;
-using Examen.UnidadDeTrabajo;
 using Examen.WebApi.Controllers;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Examen.WebApi.Tests
@@ -17,8 +15,7 @@ namespace Examen.WebApi.Tests
         private readonly CorporacionController _controlador;
 
         public CorporacionControllerTests()
-        {
-            //_controlador = new CorporacionController(new UnidadTrabajo(Configuracion.ConnectionString));
+        {            
             _controlador = new CorporacionController(UnidadTrabajoMockeada.ObtenerUnidadDeTrabajo());
         }
 
@@ -61,7 +58,7 @@ namespace Examen.WebApi.Tests
         public void Insertar_Test()
         {
             Corporation corporacion = new Corporation
-            {                
+            {
                 Corp_Name = "Nueva corporación",
                 Street = string.Empty,
                 City = string.Empty,
@@ -125,6 +122,5 @@ namespace Examen.WebApi.Tests
 
             modelo.Should().BeGreaterOrEqualTo(1);
         }
-
     }
 }

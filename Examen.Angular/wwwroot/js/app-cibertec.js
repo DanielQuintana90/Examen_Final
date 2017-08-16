@@ -155,6 +155,7 @@
 
     function loginController($http, authenticationService, configService, $state) {
         var vm = this;
+
         vm.user = {};
         vm.title = 'Iniciar sesión';
         vm.login = login;

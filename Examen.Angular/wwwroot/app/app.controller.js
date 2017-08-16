@@ -7,6 +7,7 @@
 
     function applicationController($state, $scope, configService, authenticationService, localStorageService) {
         var vm = this;
+
         vm.validate = validate;
         vm.logout = logout;
         vm.iniciarSesion = iniciarSesion;
